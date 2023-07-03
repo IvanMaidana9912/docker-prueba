@@ -12,7 +12,9 @@ const pool = createPool({
     port: process.env.MYSQLDB_DOCKER_PORT
 })
 
-app.get('/', (req, res) => res.send('Hola mundo'));
+app.use(express.static(`./views-react/dist`));
+
+app.get('/hola', (req, res) => res.send('Hola mundo'));
 app.get('/ping', async (req, res) => {
     const result = await pool.query('SELECT NOW()');
     res.json(result[0])

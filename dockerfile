@@ -5,4 +5,4 @@ COPY package.json .
 RUN npm install
 
 COPY . .
-CMD npm start
+CMD cd views-react && npm install && npm run build && cd .. && npm start
